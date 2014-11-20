@@ -1,0 +1,10 @@
+bin/
+Library/
+Temp/
+*.csproj
+*.pidb
+*.sln
+*.userprefs
+*.unityproj
+Thumbs.db
+*.DS_Store
