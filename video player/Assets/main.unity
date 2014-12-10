@@ -2252,12 +2252,12 @@ GameObject:
   - 222: {fileID: 2088145913}
   - 114: {fileID: 2088145912}
   m_Layer: 0
-  m_Name: content
+  m_Name: content (scroll not working)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2088145911
 RectTransform:
   m_ObjectHideFlags: 0
