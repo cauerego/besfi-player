@@ -3,6 +3,7 @@
 var refreshInterval : int; // in seconds
 private var lastRefreshed : float;
 static var url = new Array();
+static var jsonUrl : json = json.fromString('[]');
 
 function Start ()
 {
@@ -14,13 +15,23 @@ function Start ()
 	{
 		var jsonData : json = json.fromString(data);
 		
-		for (var _this in jsonData.values)
+		if (jsonData.stringify() != jsonUrl.stringify())
 		{
-			url.Add(_this.toString());
+			jsonUrl = jsonData;
+			
+			url.Clear();
+			for (var _this in jsonData.values)
+			{
+				url.Add(_this.toString());
+			}
+			
+			Debug.Log( "[mvPlayer] "+ lastRefreshed +" refreshing playlist with: " + jsonData.stringify() );
+			BroadcastMessage("Refresh", SendMessageOptions.DontRequireReceiver);
 		}
-		
-		Debug.Log( "[mvPlayer] "+ lastRefreshed +" refreshing playlist with: " + jsonData.stringify() );
-		BroadcastMessage("Refresh", SendMessageOptions.DontRequireReceiver);
+		else
+		{
+			Debug.Log( "[mvPlayer] "+ lastRefreshed +" refreshing playlist. Stays the same" );
+		}
 	});
 }
 
