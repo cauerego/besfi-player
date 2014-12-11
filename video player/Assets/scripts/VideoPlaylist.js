@@ -1,6 +1,7 @@
 ﻿#pragma strict
 import System.Collections.Generic;
 
+var videoListUrl = "https://www.dropbox.com/s/3hzmj699h5p3b23/video%20list.txt?dl=1";
 var refreshInterval : int; // in seconds
 private var lastRefreshed : float;
 static var url = new List.<String>();
@@ -10,11 +11,12 @@ function Start ()
 {
 	lastRefreshed = Time.time;
 	
-	var urlBase = "http://www.youtube.com/watch?v=";
+	var www : WWW = new WWW(videoListUrl);
+	yield www;
 	
-	uQuery.Get("https://www.dropbox.com/s/3hzmj699h5p3b23/video%20list.txt?dl=1", function(data, xhr : uQueryXHR)
+	if (www.error == null)
 	{
-		var jsonData : json = json.fromString(data);
+		var jsonData : json = json.fromString(www.text);
 		
 		if (jsonData.stringify() != jsonUrl.stringify())
 		{
@@ -33,7 +35,11 @@ function Start ()
 		{
 			Debug.Log( "[mvPlayer] "+ lastRefreshed +" refreshing playlist. Stays the same" );
 		}
-	});
+	}
+	else
+	{
+		Debug.LogWarning("[mvplayer] WWW Error: "+ www.error);
+	}
 }
 
 function Update ()
