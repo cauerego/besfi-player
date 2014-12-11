@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+var parent : GameObject;
 private var animator : Animator;
 private var m_youtubeURL : String;
 private var m_youtubeDel : IYoutubeDelegate;
@@ -23,7 +24,16 @@ function Start ()
 {
 	//m_youtubeDel.MPMoviePlaybackStateCallback += YoutubeCallback;
 	
-	m_youtubeURL = "http://www.youtube.com/watch?v=" + gameObject.name;
+	var videoUrl = "";
+	var videoPlaylist : VideoPlaylist;
+	if (parent != null) videoPlaylist = parent.GetComponent("VideoPlaylist") as VideoPlaylist;
+	if (videoPlaylist != null) videoUrl = videoPlaylist.videoBaseUrl;
+	
+	m_youtubeURL = videoUrl + gameObject.name;
+	if (videoUrl == "")
+	{
+		Debug.LogError("[mvplayer] Error parsing video URL: " + m_youtubeURL);
+	}
 	
 	animator = GetComponent("Animator") as Animator;
 	

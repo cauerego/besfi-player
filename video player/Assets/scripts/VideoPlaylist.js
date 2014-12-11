@@ -1,6 +1,7 @@
 ﻿#pragma strict
 import System.Collections.Generic;
 
+var videoBaseUrl = "http://www.youtube.com/watch?v=";
 var videoListUrl = "https://www.dropbox.com/s/3hzmj699h5p3b23/video%20list.txt?dl=1";
 var refreshInterval : int; // in seconds
 private var lastRefreshed : float;
