@@ -1,8 +1,9 @@
 ﻿#pragma strict
+import System.Collections.Generic;
 
 var parent : GameObject;
 var prefab : GameObject;
-var items = new Array();
+var items = new List.<GameObject>();
 
 function Start ()
 {

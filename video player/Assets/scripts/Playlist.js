@@ -1,8 +1,9 @@
 ﻿#pragma strict
+import System.Collections.Generic;
 
 var refreshInterval : int; // in seconds
 private var lastRefreshed : float;
-static var url = new Array();
+static var url = new List.<String>();
 static var jsonUrl : json = json.fromString('[]');
 
 function Start ()
