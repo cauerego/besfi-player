@@ -2,7 +2,7 @@
 
 var parent : GameObject;
 var prefab : GameObject;
-var item = new Array();
+var items = new Array();
 
 function Start ()
 {
@@ -15,6 +15,12 @@ function Update () {
 
 function Refresh ()
 {
+	for (var item in items)
+	{
+		GameObject.Destroy(item);
+	}
+	items.Clear();
+	
 	var y = -60;
 	for (var url in Playlist.url)
 	{
@@ -27,7 +33,7 @@ function Refresh ()
 		newFromPrefab.transform.localPosition = position;
 		newFromPrefab.transform.FindChild("rename-me").gameObject.name = url;
 		newFromPrefab.transform.SetParent(parent.transform.parent, false);
-		item.Add(newFromPrefab);
+		items.Add(newFromPrefab);
 		y -= 120;
 	}
 }
