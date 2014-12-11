@@ -49,5 +49,5 @@ function Awake ()
 	//cam = Camera.main;
 	renderer.material = online;
 	cam.backgroundColor = onlineColor;
-	animator = GetComponent("Animator");
+	animator = GetComponent("Animator") as Animator;
 }

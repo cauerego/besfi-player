@@ -107,12 +107,11 @@ public class IYoutubeBinding
 	public static byte[] GetYoutubeThumbnailQuick(string url, string size)
 	{
 		//Debug.Log("GetYoutubeThumbnailQuick "+ url);
-		string imagePath = "";
 		byte[] imageBytes = null;
 #if UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android)
 		{
-			imagePath = PluginObject.Call<string>("GetYoutubeThumbnailQuick", url, size);
+			string imagePath = PluginObject.Call<string>("GetYoutubeThumbnailQuick", url, size);
 			if(imagePath == null)
 				return null;
 			
@@ -121,15 +120,14 @@ public class IYoutubeBinding
 #elif UNITY_IOS
 		if( Application.platform == RuntimePlatform.IPhonePlayer )
 		{
-			imagePath = _getYoutubeThumbnailQuick(url, size);
+			string imagePath = _getYoutubeThumbnailQuick(url, size);
 			if(imagePath == "")
 				return null;
 	        
 			imageBytes = File.ReadAllBytes(imagePath);
 		}
 #endif
-		
-		
+
         return imageBytes;
 	}
 	

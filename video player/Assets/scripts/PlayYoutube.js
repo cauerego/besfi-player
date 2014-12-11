@@ -25,7 +25,7 @@ function Start ()
 	
 	m_youtubeURL = "http://www.youtube.com/watch?v=" + gameObject.name;
 	
-	animator = GetComponent("Animator");
+	animator = GetComponent("Animator") as Animator;
 	
 	LoadYoutubeImageUrl();
 	
