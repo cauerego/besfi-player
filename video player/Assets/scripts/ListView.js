@@ -23,7 +23,7 @@ function Refresh ()
 	items.Clear();
 	
 	var y = -60;
-	for (var url in Playlist.url)
+	for (var url in VideoPlaylist.url)
 	{
 		var position = Vector3(0, y, 0);
 		var newFromPrefab = GameObject.Instantiate(prefab) as GameObject;
