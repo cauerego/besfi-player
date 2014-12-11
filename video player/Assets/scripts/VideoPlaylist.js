@@ -1,18 +1,18 @@
 ﻿#pragma strict
 import System.Collections.Generic;
 
-var videoBaseUrl = "http://www.youtube.com/watch?v=";
-var videoListUrl = "https://www.dropbox.com/s/3hzmj699h5p3b23/video%20list.txt?dl=1";
-var refreshInterval : int; // in seconds
+private var settings : Settings;
 private var lastRefreshed : float;
 static var url = new List.<String>();
 static var jsonUrl : json = json.fromString('[]');
 
 function Start ()
 {
+	settings = Settings.Instance;
+	
 	lastRefreshed = Time.time;
 	
-	var www : WWW = new WWW(videoListUrl);
+	var www : WWW = new WWW(settings.videoListUrl);
 	yield www;
 	
 	if (www.error == null)
@@ -45,7 +45,7 @@ function Start ()
 
 function Update ()
 {
-	if (refreshInterval > 0 && Time.time > lastRefreshed + refreshInterval)
+	if (settings.playlistRefreshInterval > 0 && Time.time > lastRefreshed + settings.playlistRefreshInterval)
 	{
 		Start();
 	}

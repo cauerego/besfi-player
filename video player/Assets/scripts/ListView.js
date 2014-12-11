@@ -37,10 +37,6 @@ function Refresh ()
 		newFromPrefab.transform.FindChild("rename-me").gameObject.name = url;
 		newFromPrefab.transform.SetParent(parent.transform.parent, false);
 		
-		// ugly dependency, from prefab hierarchy
-		var playButton = newFromPrefab.transform.GetChild(0).GetComponent("PlayYoutube") as PlayYoutube;
-		if (playButton != null) playButton.parent = parent;
-		
 		items.Add(newFromPrefab);
 		y -= 120;
 	}

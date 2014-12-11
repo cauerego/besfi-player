@@ -159,7 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efe5ee59f7414929b5a3f9e62de819d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refreshInterval: 0
 --- !u!1 &221196934
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1105494738}
   prefab: {fileID: 100002, guid: 060a96ae2fc9f46028f2eedfa03f8aa4, type: 2}
+  items: []
 --- !u!1 &350401659
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +527,7 @@ RectTransform:
   - {fileID: 1621242647}
   - {fileID: 1129423908}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -633,7 +633,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &579298387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1147,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 221196935}
   m_RootOrder: 0
+--- !u!1 &1047407236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1047407237}
+  - 114: {fileID: 1047407238}
+  m_Layer: 0
+  m_Name: Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1047407237
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1047407236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!114 &1047407238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1047407236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c671cb6b43a4460915c242fd1476bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoBaseUrl: http://www.youtube.com/watch?v=
+  videoListUrl: https://www.dropbox.com/s/3hzmj699h5p3b23/video%20list.txt?dl=1
+  playlistRefreshInterval: 20
 --- !u!1 &1064872625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efe5ee59f7414929b5a3f9e62de819d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refreshInterval: 20
 --- !u!114 &1105494741
 MonoBehaviour:
   m_ObjectHideFlags: 0
