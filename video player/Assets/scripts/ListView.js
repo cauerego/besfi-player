@@ -6,6 +6,15 @@ var item = new Array();
 
 function Start ()
 {
+	Refresh();
+}
+
+function Update () {
+
+}
+
+function Refresh ()
+{
 	var y = -60;
 	for (var url in Playlist.url)
 	{
@@ -21,8 +30,4 @@ function Start ()
 		item.Add(newFromPrefab);
 		y -= 120;
 	}
-}
-
-function Update () {
-
 }
