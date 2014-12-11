@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efe5ee59f7414929b5a3f9e62de819d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refreshInterval: 0
 --- !u!1 &221196934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efe5ee59f7414929b5a3f9e62de819d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refreshInterval: 20
 --- !u!114 &1105494741
 MonoBehaviour:
   m_ObjectHideFlags: 0
