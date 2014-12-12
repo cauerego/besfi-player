@@ -1,6 +1,8 @@
 ﻿#pragma strict
 import System.Collections.Generic;
 
+var loading : GameObject;
+var error : GameObject;
 private var settings : Settings;
 private var lastRefreshed : float;
 static var url = new List.<String>();
@@ -39,8 +41,10 @@ function Start ()
 	}
 	else
 	{
+		error.SetActive(true);
 		Debug.LogWarning("[mvplayer] WWW Error: "+ www.error);
 	}
+	GameObject.Destroy(loading);
 }
 
 function Update ()
