@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-private var animator : Animator;
+private var animators : Animator[];
 private var m_youtubeURL : String;
 private var m_youtubeDel : IYoutubeDelegate;
 private var tex : Texture2D;
@@ -10,12 +10,15 @@ function OnMouseUpAsButton () { OnPointerUpAsButton(); }
 #endif
 function OnPointerUpAsButton ()
 {
-	switch (Random.Range(0, 3)) {
-		case 0: animator.SetTrigger("spin y"); break;
-		case 1: animator.SetTrigger("spin z"); break;
-		case 2: animator.SetTrigger("spin x"); break;
+	for (var animator in animators)
+	{
+		switch (Random.Range(0, 3)) {
+			case 0: animator.SetTrigger("spin y"); break;
+			case 1: animator.SetTrigger("spin z"); break;
+			case 2: animator.SetTrigger("spin x"); break;
+		}
+		while (!animator.GetCurrentAnimatorStateInfo(0).IsName("idle")) yield; // not working!
 	}
-	while (!animator.GetCurrentAnimatorStateInfo(0).IsName("idle")) yield; // not working!
 	IYoutubeBinding.PlayVideo(m_youtubeURL, "medium");
 }
 
@@ -25,7 +28,7 @@ function Start ()
 	
 	m_youtubeURL = Settings.Instance.videoBaseUrl + gameObject.name;
 	
-	animator = GetComponent("Animator") as Animator;
+	animators = GetComponentsInChildren.<Animator>();
 	
 	LoadYoutubeImageUrl();
 	
@@ -49,7 +52,7 @@ imageBytes = texAss.bytes;
 		tex.Apply();
 		
 //		Debug.Log(String.Format("{0} = {1}", renderer.material.mainTexture.name, tex.name));
-		renderer.material.mainTexture = tex;
+//		renderer.material.mainTexture = tex;
 	}
 }
 
@@ -62,12 +65,16 @@ function LoadImageUrl ()
 	
 	if (String.IsNullOrEmpty(imageSource.error))
 	{
-		imageSource.LoadImageIntoTexture(tex);	
-		renderer.material.mainTexture = tex;
+		imageSource.LoadImageIntoTexture(tex);
+		
+		for (var rend : Renderer in GetComponentsInChildren.<Renderer>())
+		{
+			rend.material.mainTexture = tex;
+		}
 	}
 	else
 	{
-		Debug.LogError("Couldn't LoadImageUrl: " + imageSource.error);
+		Debug.LogError("[mvplayer] Couldn't LoadImageUrl: " + imageSource.error);
 	}
 }
 
