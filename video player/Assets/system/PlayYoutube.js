@@ -1,5 +1,6 @@
 ﻿#pragma strict
 
+var button : UI.Button;
 private var animators : Animator[];
 private var m_youtubeURL : String;
 private var m_youtubeDel : IYoutubeDelegate;
@@ -24,6 +25,13 @@ function OnPointerUpAsButton ()
 
 function Start ()
 {
+	button = GetComponent.<UI.Button>();
+	button.onClick.RemoveAllListeners();
+	button.onClick.AddListener(function() {
+		Debug.Log(""); // doesn't work with this line, for w/e reason! O_o
+		OnPointerUpAsButton();
+	});
+	
 	//m_youtubeDel.MPMoviePlaybackStateCallback += YoutubeCallback;
 	
 	m_youtubeURL = Settings.Instance.videoBaseUrl + gameObject.name;
