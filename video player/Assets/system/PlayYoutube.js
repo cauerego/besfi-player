@@ -74,7 +74,7 @@ function LoadImageUrl ()
 	}
 	else
 	{
-		Debug.LogError("[mvplayer] Couldn't LoadImageUrl ("+ imageSource.url +"): " + imageSource.error);
+		Debug.LogError("[mvPlayer3D] Couldn't LoadImageUrl ("+ imageSource.url +"): " + imageSource.error);
 	}
 }
 

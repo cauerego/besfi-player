@@ -31,18 +31,18 @@ function Start ()
 				url.Add(_this.toString());
 			}
 			
-			Debug.Log( "[mvPlayer] "+ lastRefreshed +" refreshing playlist with: " + jsonData.stringify() );
+			Debug.Log( "[mvPlayer3D] "+ lastRefreshed +" refreshing playlist with: " + jsonData.stringify() );
 			BroadcastMessage("Refresh", SendMessageOptions.DontRequireReceiver);
 		}
 		else
 		{
-			Debug.Log( "[mvPlayer] "+ lastRefreshed +" refreshing playlist. Stays the same" );
+			Debug.Log( "[mvPlayer3D] "+ lastRefreshed +" refreshing playlist. Stays the same" );
 		}
 	}
 	else
 	{
 		error.SetActive(true);
-		Debug.LogWarning("[mvplayer] WWW Error: "+ www.error);
+		Debug.LogWarning("[mvPlayer3D] WWW Error: "+ www.error);
 	}
 	GameObject.Destroy(loading);
 }
