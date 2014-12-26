@@ -82,7 +82,7 @@ function LoadImageUrl ()
 	}
 	else
 	{
-		Debug.LogError("[mvPlayer3D] Couldn't LoadImageUrl ("+ imageSource.url +"): " + imageSource.error);
+		Debug.LogError("[be-sFi player] Couldn't LoadImageUrl ("+ imageSource.url +"): " + imageSource.error);
 	}
 }
 
