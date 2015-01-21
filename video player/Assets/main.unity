@@ -1652,7 +1652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoBaseUrl: http://www.youtube.com/watch?v=
-  videoListUrl: https://www.dropbox.com/sh/uegb5v2mc69rejh/AABCc58Qj4-Y3gsxuTvoNZmOa/besfi/animatunes-animacoes.txt?dl=1
+  videoListUrl: https://www.dropbox.com/sh/uegb5v2mc69rejh/AAAkWvDgho3Zf2IYuya-rGrGa/besfi/animatunes-animacoes.txt?dl=1
   playlistRefreshInterval: 20
 --- !u!1 &1064872625
 GameObject:
