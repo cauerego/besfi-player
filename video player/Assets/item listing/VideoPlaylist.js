@@ -8,7 +8,7 @@ private var lastRefreshed : float;
 static var url = new List.<String>();
 static var jsonUrl : json = json.fromString('[]');
 
-function Start ()
+function BroadcastRefresh ()
 {
 	settings = Settings.Instance;
 	
@@ -47,10 +47,15 @@ function Start ()
 	GameObject.Destroy(loading);
 }
 
+function Start ()
+{
+	BroadcastRefresh();
+}
+
 function Update ()
 {
 	if (settings.playlistRefreshInterval > 0 && Time.time > lastRefreshed + settings.playlistRefreshInterval)
 	{
-		Start();
+		BroadcastRefresh();
 	}
 }
