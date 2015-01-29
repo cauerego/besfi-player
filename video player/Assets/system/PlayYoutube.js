@@ -1,10 +1,13 @@
 ﻿#pragma strict
+//import System.Collections.Generic;
 
 var button : UI.Button;
 private var animators : Animator[];
 private var m_youtubeURL : String;
 private var m_youtubeDel : IYoutubeDelegate;
 private var tex : Texture2D;
+//private var jsonCached : json = json.fromString('[]'); // not working
+private var jsonCached : JSONObject; // also not working
 
 #if UNITY_EDITOR or UNITY_STANDALONE or UNITY_WEBPLAYER
 function OnMouseUpAsButton () { OnPointerUpAsButton(); }
@@ -38,9 +41,51 @@ function Start ()
 	
 	animators = GetComponentsInChildren.<Animator>();
 	
+	SendMessage("LoadYoutubeDescription");
+	
 	LoadYoutubeImageUrl();
 	
 	StartCoroutine("LoadImageUrl");
+}
+
+function notworking_LoadYoutubeDescription ()
+{
+	var text = "Loading . . .";
+	var compText = GetComponentInChildren.<UI.Text>() as UI.Text;
+	compText.text = text;
+	
+	var www : WWW = new WWW("http://gdata.youtube.com/feeds/api/videos/"+ gameObject.name +"?v=2&alt=json");
+	yield www;
+	
+	if (www.error == null)
+	{
+//		var jsonData : json = json.fromString(www.text)._get("entry")._get("media$group");
+		var jsonData : JSONObject = new JSONObject();//www.text)["entry"]["media$group"];
+		
+Debug.Log(www.url);// +"    "+ jsonData.stringify());
+//		if (jsonData.stringify() != jsonCached.stringify())
+		{
+			jsonCached = jsonData;
+			
+			/*url.Clear();
+			for (var _this in jsonData.values)
+			{
+				url.Add(_this.toString());
+			}*/
+		}
+//		else // use cached json
+		{
+		}
+		text = jsonCached["media$title"]["$t"].ToString();
+//		text = jsonCached._get("media$title")._get("$t").toString();
+//			+"\n"+ jsonCached._get("media$description")._get("$t").toString();
+	}
+	else
+	{
+		//error.SetActive(true);
+		text = "Error loading title! "+ www.error;
+	}
+	compText.text = text;
 }
 
 function LoadYoutubeImageUrl ()
