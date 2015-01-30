@@ -36,4 +36,6 @@ function Refresh ()
 		items.Add(newFromPrefab);
 		y -= 150;
 	}
+	
+	parent.GetComponent.<RectTransform>().sizeDelta = new Vector2(0, Mathf.Abs(y));
 }
