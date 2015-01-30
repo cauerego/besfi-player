@@ -37,7 +37,7 @@ public class SetYoutubeDescription : MonoBehaviour
 			else // use cached json
 			{
 			}
-			text = jsonCached["media$title"]["$t"].ToString().Replace("\"", "")
+			text = jsonCached["media$title"]["$t"].ToString().Replace("\"", "").Replace(" - ANIMATUNES", "")
 				+"\n\n"+ jsonCached["media$description"]["$t"].ToString().Replace("\"", "");
 		}
 		else
